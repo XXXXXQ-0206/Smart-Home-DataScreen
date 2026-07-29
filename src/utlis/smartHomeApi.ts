@@ -25,7 +25,7 @@ type ApiRecord = Record<string, unknown>
 type ApiResponse = { data?: unknown }
 
 const client = axios.create({
-  baseURL: (process.env.VUE_APP_SMARTHOME_API_BASE_URL || '').replace(/\/$/, ''),
+  baseURL: (import.meta.env.VITE_SMARTHOME_API_BASE_URL || '').replace(/\/$/, ''),
   timeout: 10000,
 })
 

@@ -21,18 +21,18 @@ Screenshots are not included yet. The dashboard is designed for authenticated Sm
 
 ## Installation
 
-Requirements: Node.js 18 or newer and npm 9 or newer.
+Requirements: Node.js 22 or newer and npm 11 or newer.
 
 ```bash
 npm ci
 ```
 
-The dashboard expects the Smart-Home API to be reachable at the same origin, or through a configured reverse proxy. For a separate API origin, set `VUE_APP_SMARTHOME_API_BASE_URL` before building.
+The dashboard expects the Smart-Home API to be reachable at the same origin, or through a configured reverse proxy. For a separate API origin, set `VITE_SMARTHOME_API_BASE_URL` before building.
 
 ## Usage
 
 ```bash
-npm run serve
+npm run dev
 ```
 
 Open the printed local URL after configuring a valid Smart-Home session. The API client reads `token` and `houseid` from `localStorage`; it never contains a repository credential.
@@ -84,7 +84,7 @@ No. This repository intentionally contains only the live API implementation. Use
 
 ## Acknowledgements
 
-- Vue 3 and Vue CLI
+- Vue 3 and Vite
 - Apache ECharts
 - Axios
 

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES2022",
     "module": "esnext",
     "strict": true,
     "jsx": "preserve",
@@ -13,9 +13,7 @@
     "useDefineForClassFields": true,
     "sourceMap": true,
     "baseUrl": ".",
-    "types": [
-      "webpack-env"
-    ],
+    "types": ["vite/client"],
     "paths": {
       "@/*": [
         "src/*"

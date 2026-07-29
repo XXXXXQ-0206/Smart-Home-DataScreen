@@ -21,18 +21,18 @@ Smart-Home Data Screen 是一个 Vue 3 数据大屏，通过 Smart-Home 实时 H
 
 ## 安装
 
-要求 Node.js 18 或更高版本，以及 npm 9 或更高版本。
+要求 Node.js 22 或更高版本，以及 npm 11 或更高版本。
 
 ```bash
 npm ci
 ```
 
-大屏默认要求 Smart-Home API 与页面同源，或由反向代理转发。使用独立 API 地址构建时，请在构建前设置 `VUE_APP_SMARTHOME_API_BASE_URL`。
+大屏默认要求 Smart-Home API 与页面同源，或由反向代理转发。使用独立 API 地址构建时，请在构建前设置 `VITE_SMARTHOME_API_BASE_URL`。
 
 ## 使用
 
 ```bash
-npm run serve
+npm run dev
 ```
 
 配置有效的 Smart-Home 会话后，打开命令输出的本地地址。API 客户端从 `localStorage` 读取 `token` 和 `houseid`，仓库中不包含任何凭证。
@@ -84,7 +84,7 @@ public/              静态入口和图标
 
 ## 致谢
 
-- Vue 3 和 Vue CLI
+- Vue 3 和 Vite
 - Apache ECharts
 - Axios
 

@@ -1,0 +1,46 @@
+name: Dependency review
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check-dependency-graph:
+    runs-on: ubuntu-latest
+    outputs:
+      supported: ${{ steps.graph.outputs.supported }}
+    steps:
+      - name: Check GitHub Dependency Graph availability
+        id: graph
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          status="$(curl -sS -o /dev/null -w '%{http_code}' \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/dependency-graph/sbom")"
+          case "$status" in
+            200) echo "supported=true" >> "$GITHUB_OUTPUT" ;;
+            404) echo "supported=false" >> "$GITHUB_OUTPUT" ;;
+            *) echo "Unexpected Dependency Graph response: $status" >&2; exit 1 ;;
+          esac
+
+  dependency-review:
+    needs: check-dependency-graph
+    if: needs.check-dependency-graph.outputs.supported == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/dependency-review-action@v4
+
+  dependency-graph-unavailable:
+    needs: check-dependency-graph
+    if: needs.check-dependency-graph.outputs.supported == 'false'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Explain skipped review
+        run: echo "::warning::GitHub Dependency Graph is unavailable for this repository; dependency review was skipped. Enable it in repository security settings to activate this check."

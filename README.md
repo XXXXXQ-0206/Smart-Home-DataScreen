@@ -18,6 +18,15 @@ Smart-Home Data Screen is a Vue 3 dashboard for monitoring a Smart-Home installa
 - Automatic refresh every 30 seconds with endpoint-level failure reporting.
 - Token and house selection read from browser storage used by the Smart-Home web client.
 - Responsive dark dashboard layout for wall displays and desktop browsers.
+- Optional local MQTT-to-WebSocket bridge for connecting the dashboard to a development board.
+
+### Development-board bridge
+
+The bridge lives in [`tools/mqtt-proxy/`](tools/mqtt-proxy/). It subscribes to
+development-board telemetry through MQTT and forwards it to browser clients over
+WebSocket; browser commands can be validated and published back to MQTT. The
+bridge is a local development component and is not required for the HTTP API
+dashboard build.
 
 ## Screenshots
 
@@ -29,6 +38,12 @@ Requirements: Node.js 22 or newer and npm 11 or newer.
 
 ```bash
 npm ci
+```
+
+To install the bridge dependencies as well:
+
+```bash
+npm run mqtt-proxy:install
 ```
 
 The dashboard expects the Smart-Home API to be reachable at the same origin, or through a configured reverse proxy. For a separate API origin, set `VITE_SMARTHOME_API_BASE_URL` before building.
@@ -48,6 +63,9 @@ npm run lint
 npm run build
 ```
 
+Start the local development-board bridge with `npm run mqtt-proxy:start` after
+configuring `tools/mqtt-proxy/.env` from its example file.
+
 The production bundle is written to `dist/`. Do not commit `dist/` unless your deployment process explicitly requires it.
 
 ## Project Structure
@@ -60,6 +78,7 @@ src/
   views/             Dashboard page
 public/              Static entry point and favicon
 .github/             CI, CodeQL, Dependabot, and issue templates
+tools/mqtt-proxy/    Optional MQTT-to-WebSocket bridge for development boards
 ```
 
 ## Roadmap

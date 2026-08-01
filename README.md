@@ -3,7 +3,7 @@
 [English](README.md) | [中文](README.zh-CN.md)
 
 <p align="center">
-  <img src="docs/assets/datascreen-preview.png" alt="Smart-Home Data Screen preview" width="100%">
+  <img src="docs/assets/datascreen-preview.png" alt="Smart-Home Data Screen preview">
 </p>
 
 ## Project Overview

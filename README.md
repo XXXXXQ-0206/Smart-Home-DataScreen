@@ -2,6 +2,10 @@
 
 [English](README.md) | [中文](README.zh-CN.md)
 
+<p align="center">
+  <img src="docs/assets/datascreen-preview.png" alt="Smart-Home Data Screen preview">
+</p>
+
 ## Project Overview
 
 Smart-Home Data Screen is a Vue 3 dashboard for monitoring a Smart-Home installation through its live HTTP API. It is the API-backed successor to the historical mock-data dashboard. The published application does not ship a mock runtime or bundled sample telemetry.
@@ -17,7 +21,7 @@ Smart-Home Data Screen is a Vue 3 dashboard for monitoring a Smart-Home installa
 
 ## Screenshots
 
-Screenshots are not included yet. The dashboard is designed for authenticated Smart-Home deployments.
+The preview above shows the live dashboard layout. Runtime data is loaded from an authenticated Smart-Home API deployment.
 
 ## Installation
 

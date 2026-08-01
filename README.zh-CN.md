@@ -2,6 +2,10 @@
 
 [English](README.md) | [中文](README.zh-CN.md)
 
+<p align="center">
+  <img src="docs/assets/datascreen-preview.png" alt="Smart-Home 数据大屏预览">
+</p>
+
 ## 项目概览
 
 Smart-Home Data Screen 是一个 Vue 3 数据大屏，通过 Smart-Home 实时 HTTP API 展示家庭设备状态。它重建了历史上的 mock 数据大屏，但发布版本只包含真实 API 实现，不包含 mock 运行入口或打包的示例遥测数据。
@@ -17,7 +21,7 @@ Smart-Home Data Screen 是一个 Vue 3 数据大屏，通过 Smart-Home 实时 H
 
 ## 截图
 
-暂未提供截图。该大屏面向需要认证的 Smart-Home 部署。
+上方预览图展示了大屏的实际布局。运行时数据来自需要认证的 Smart-Home API 部署。
 
 ## 安装
 

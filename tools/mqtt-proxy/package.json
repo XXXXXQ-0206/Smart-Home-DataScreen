@@ -1,0 +1,17 @@
+{
+  "name": "smart-home-mqtt-proxy",
+  "version": "1.0.0",
+  "description": "Local MQTT to WebSocket bridge for the Smart-Home data screen",
+  "main": "proxy.js",
+  "scripts": {
+    "start": "node proxy.js",
+    "test": "node --check proxy.js"
+  },
+  "keywords": ["mqtt", "websocket", "smart-home", "iot"],
+  "author": "XXXXXQ-0206",
+  "license": "MIT",
+  "dependencies": {
+    "mqtt": "^5.13.1",
+    "ws": "^8.21.0"
+  }
+}

@@ -18,6 +18,14 @@ Smart-Home Data Screen 是一个 Vue 3 数据大屏，通过 Smart-Home 实时 H
 - 每 30 秒自动刷新，并报告各接口的失败情况。
 - 读取 Smart-Home Web 客户端使用的浏览器存储中的 token 和房屋选择。
 - 适合大屏和桌面浏览器的深色响应式布局。
+- 可选的 MQTT 到 WebSocket 桥接器，用于连接开发板。
+
+### 开发板连接桥接器
+
+桥接器位于 [`tools/mqtt-proxy/`](tools/mqtt-proxy/)。它通过 MQTT 订阅开发板
+遥测数据，再通过 WebSocket 转发给数据大屏；浏览器发出的设备命令也可以
+经过校验后发布回 MQTT。它是本地开发组件，不影响基于 Smart-Home HTTP API
+的数据大屏构建。
 
 ## 截图
 
@@ -29,6 +37,12 @@ Smart-Home Data Screen 是一个 Vue 3 数据大屏，通过 Smart-Home 实时 H
 
 ```bash
 npm ci
+```
+
+如需安装桥接器依赖：
+
+```bash
+npm run mqtt-proxy:install
 ```
 
 大屏默认要求 Smart-Home API 与页面同源，或由反向代理转发。使用独立 API 地址构建时，请在构建前设置 `VITE_SMARTHOME_API_BASE_URL`。
@@ -48,6 +62,9 @@ npm run lint
 npm run build
 ```
 
+配置 `tools/mqtt-proxy/.env` 后，可使用 `npm run mqtt-proxy:start` 启动开发板
+连接桥接器。
+
 生产构建输出到 `dist/`。除非部署流程明确要求，否则不要提交 `dist/`。
 
 ## 项目结构
@@ -60,6 +77,7 @@ src/
   views/             大屏页面
 public/              静态入口和图标
 .github/             CI、CodeQL、Dependabot 和 issue 模板
+tools/mqtt-proxy/    可选的开发板 MQTT-WebSocket 桥接器
 ```
 
 ## 路线图
